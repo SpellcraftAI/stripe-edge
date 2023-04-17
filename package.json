@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "stripe-edge",
   "version": "0.0.1",
   "license": "MIT",
   "type": "module",
@@ -13,13 +13,10 @@
   ],
   "exports": {
     "./package.json": "./package.json",
-    ".": "./dist/index.js",
-    "./*": "./dist/components/*/index.js",
-    "./styles": "./dist/bundle.css",
-    "./styles/*": "./dist/components/*/index.css"
+    ".": "./dist/index.js"
   },
   "scripts": {
-    "export": "tsmodule build",
+    "export": "tsmodule build --standalone src/index.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -29,12 +26,13 @@
     "prepublishOnly": "yarn test && yarn export"
   },
   "devDependencies": {
+    "@stripe/stripe-js": "^1.52.1",
     "@tsmodule/react": "^12.0.0",
     "@tsmodule/tsmodule": "^42.6.0",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
     "autoprefixer": "^10.4.14",
     "ava": "^5.2.0",
     "cssnano": "^6.0.0",
@@ -53,6 +51,7 @@
   },
   "style": "dist/bundle.css",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
